@@ -15,6 +15,13 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl.recovery \
     android.hardware.boot@1.2-service
 
+PRODUCT_PACKAGES := \
+    $(filter-out \
+        androidx.wear_wear \
+        androidx.wear.compose_compose-foundation, \
+        $(PRODUCT_PACKAGES) \
+    )
+
 PRODUCT_PACKAGES += \
     update_engine \
     update_engine_sideload \
@@ -37,7 +44,7 @@ PRODUCT_PACKAGES += \
     otapreopt_script
 
 # API levels
-BOARD_API_LEVEL := 31
+#BOARD_API_LEVEL := 31
 PRODUCT_SHIPPING_API_LEVEL := 31
 
 # fastbootd
@@ -114,3 +121,4 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/matisse/matisse-vendor.mk)
+
